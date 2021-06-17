@@ -85,12 +85,12 @@ class Airplane {
      this.tank = this.tank + gallons;
    }
    drive(distance){
-    const drivableMiles = this.tank * this.milesPerGallon;
-    if (distance <= drivableMiles) {
+    const driveMiles = this.tank * this.milesPerGallon;
+    if (distance <= driveMiles) {
       this.odometer = this.odometer + distance;
       this.tank = this.tank - (distance / this.milesPerGallon)
     } else {
-      this.odometer = this.odometer + drivableMiles;
+      this.odometer = this.odometer + driveMiles;
       this.tank = 0;
       return `I ran out of fuel at ${this.odometer} miles!`
     }
@@ -172,13 +172,15 @@ class Airplane {
        this.favSubjects = object.favSubjects;
      }
      listSubjects(){
-       return `Loving HTML, CSS, JS!`;
-     }
+      const favlists = this.favSubjects.map(subject => subject);
+      return favlists;
+      }
+     
      PRAssignment(subject){
-       return `${student.name} has submitted a PR for ${subject.subjectname}`;
+       return `${this.name} has submitted a PR for ${subject}`;
      }
      sprintChallenge(subject){
-       return `${student.name} has begun sprint challenge on ${subject.subjectname}`;
+       return `${this.name} has begun sprint challenge on ${subject}`;
      }
  }
   
