@@ -110,10 +110,10 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
-   constructor(thing){
-     this.name = thing.name;
-     this.age = thing.age;
-     this.location = thing.location;
+   constructor(object){
+     this.name = object.name;
+     this.age = object.age;
+     this.location = object.location;
    }
    speak(){
      return `Hello my name is ${this.name}, I am from ${this.location}`;
@@ -136,11 +136,11 @@ class Airplane {
           + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
   */
  class Instructor extends Lambdasian{
-    constructor(key){
-      super(key);
-      this.specialty = key.specialty;
-      this.favLanguage = key.favLanguage;
-      this.catchPhrase = key.catchPhrase;
+    constructor(object){
+      super(object);
+      this.specialty = object.specialty;
+      this.favLanguage = object.favLanguage;
+      this.catchPhrase = object.catchPhrase;
     }
     demo(subject){
       return `Today we are learning about ${subject}`;
@@ -164,8 +164,22 @@ class Airplane {
           + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
- class Student {
-     
+ class Student extends Lambdasian{
+     constructor(object){
+       super(object);
+       this.previousBackground = object.previousBackground;
+       this.className = object.className;
+       this.favSubjects = object.favSubjects;
+     }
+     listSubjects(){
+       return `Loving HTML, CSS, JS!`;
+     }
+     PRAssignment(subject){
+       return `${student.name} has submitted a PR for ${subject.subjectname}`;
+     }
+     sprintChallenge(subject){
+       return `${student.name} has begun sprint challenge on ${subject.subjectname}`;
+     }
  }
   
   /*
@@ -181,8 +195,18 @@ class Airplane {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
+ class ProjectManager extends Instructor{
+   constructor(object){
+     super(object);
+     this.gradClassName = object.gradClassName;
+     this.favInstructor = object.favInstructor;
+   }
+     standUp(slackchannel){
+       return `${this.name} announces to ${slackchannel}, @channel study times!`;
+     }
+     debugsCode(student, subject){
+       return `${this.name} debugs ${student.name}'s code on ${subject}`;
+     }
  }
   /*
     STRETCH PROBLEM (no tests!)
